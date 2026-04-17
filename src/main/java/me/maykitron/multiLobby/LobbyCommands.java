@@ -26,9 +26,12 @@ public class LobbyCommands implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            if (cmd.getName().equalsIgnoreCase("multilobby") && args.length > 0 && args[0].equalsIgnoreCase("yenile")) {
+            if (cmd.getName().equalsIgnoreCase("multilobby") && args.length > 0 &&
+                    (args[0].equalsIgnoreCase("yenile") || args[0].equalsIgnoreCase("reload"))) {
                 plugin.loadConfigValues();
-                sender.sendMessage("MultiLobby config yenilendi.");
+                sender.sendMessage("[MultiLobby] Config, lang ve menuler basariyla yenilendi.");
+            } else {
+                sender.sendMessage("[MultiLobby] Sadece oyuncular bu komutlari kullanabilir. Yenilemek icin: /multilobby reload");
             }
             return true;
         }
@@ -66,7 +69,8 @@ public class LobbyCommands implements CommandExecutor {
                 plugin.getConfig().set("spawn.z", l.getZ());
                 plugin.getConfig().set("spawn.yaw", l.getYaw());
                 plugin.getConfig().set("spawn.pitch", l.getPitch());
-                plugin.saveConfig(); plugin.loadConfigValues();
+                plugin.saveConfig();
+                plugin.loadConfigValues();
                 p.sendMessage(plugin.getLang().s("spawn.set-success", "§aSpawn noktası başarıyla ayarlandı!"));
                 return true;
 
@@ -95,7 +99,13 @@ public class LobbyCommands implements CommandExecutor {
                     if (loc != null) plugin.getTeleportUtil().startWarmupTeleport(p, loc, args[0], null, null);
                     else p.sendMessage(plugin.getLang().s("warp.not-found"));
                 } else {
-                    plugin.getMenuManager().openWarpMenu(p);
+                    // Bedrock kontrolü
+                    if (plugin.getServer().getPluginManager().getPlugin("floodgate") != null &&
+                            org.geysermc.floodgate.api.FloodgateApi.getInstance().isFloodgatePlayer(p.getUniqueId())) {
+                        plugin.getMenuManager().openBedrockWarpForm(p);
+                    } else {
+                        plugin.getMenuManager().openWarpMenu(p);
+                    }
                 }
                 return true;
 
@@ -104,20 +114,33 @@ public class LobbyCommands implements CommandExecutor {
                 plugin.getMenuManager().openRtpMenu(p);
                 return true;
 
-            case "discord": sendClickableLink(p, "discord"); return true;
-            case "tiktok": sendClickableLink(p, "tiktok"); return true;
-            case "website": sendClickableLink(p, "website"); return true;
-            case "map": sendClickableLink(p, "map"); return true;
+            case "discord":
+                sendClickableLink(p, "discord"); return true;
+            case "tiktok":
+                sendClickableLink(p, "tiktok"); return true;
+            case "website":
+            case "site":
+                sendClickableLink(p, "website"); return true;
+            case "map":
+                sendClickableLink(p, "map"); return true;
 
             case "lobimatik":
             case "multilobby":
-                if (args.length == 1 && args[0].equalsIgnoreCase("yenile") && p.hasPermission("multilobby.admin")) {
-                    plugin.loadConfigValues();
-                    p.sendMessage(plugin.getLang().s("messages.reload-success", "§aMultiLobby ayarları yenilendi."));
+                if (args.length == 1 && (args[0].equalsIgnoreCase("yenile") || args[0].equalsIgnoreCase("reload"))) {
+                    if (p.hasPermission("multilobby.admin")) {
+                        plugin.loadConfigValues();
+                        p.sendMessage(plugin.getLang().s("messages.reload-success", "§aMultiLobby ayarları yenilendi."));
+                    } else {
+                        p.sendMessage(plugin.getLang().s("messages.no-permission", "§cYetkin yok."));
+                    }
                 } else {
                     p.sendMessage("§7MultiLobby Komutları: §f/spawn, /warp, /kaptan, /home");
+                    if (p.hasPermission("multilobby.admin")) {
+                        p.sendMessage("§cAdmin: §f/multilobby reload");
+                    }
                 }
                 return true;
+
             case "back":
                 plugin.getBackManager().teleportBack(p);
                 return true;
@@ -126,9 +149,17 @@ public class LobbyCommands implements CommandExecutor {
     }
 
     private void sendClickableLink(Player p, String path) {
-        String text = plugin.getLang().s("links." + path + "-text", "§bTıkla!");
-        String url = plugin.getLang().s("links." + path + "-url", "https://google.com");
-        String hover = plugin.getLang().s("links." + path + "-hover", "§7Gitmek için tıkla.");
+        // Bedrock kontrolü
+        if (plugin.getServer().getPluginManager().getPlugin("floodgate") != null &&
+                org.geysermc.floodgate.api.FloodgateApi.getInstance().isFloodgatePlayer(p.getUniqueId())) {
+            plugin.getMenuManager().openBedrockLinksForm(p);
+            return;
+        }
+
+        // Java Oyuncuları için normal tıklanabilir mesaj
+        String text = plugin.getLang().s("links." + path + ".text", "§bTıkla!");
+        String url = plugin.getLang().s("links." + path + ".url", "https://google.com");
+        String hover = plugin.getLang().s("links." + path + ".hover", "§7Gitmek için tıkla.");
 
         TextComponent message = new TextComponent(text);
         message.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, url));

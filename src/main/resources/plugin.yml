@@ -1,9 +1,10 @@
 name: MultiLobby
-version: 1.0.0
+version: 1.1
 main: me.maykitron.multiLobby.MultiLobby
 api-version: 1.19
 authors: [Maykitron]
-description: Optimize edilmis Spawn, Warp, Home, RTP(Menu) ve Link eklentisi.
+description: Optimize edilmis Spawn, Warp, Home, RTP(Menu) ve Link eklentisi. Ayrıca Bedrock desteği de bulunuyor!
+softdepend: [ItemsAdder, floodgate]
 
 commands:
   spawn:

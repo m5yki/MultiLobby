@@ -1,17 +1,82 @@
 rtp:
   cooldown-seconds: 30
-  menu:
-    title: "§dRTP Dünya Seç"
-    rows: 3
-  worlds:
-    orman_dunyasi:
-      target-world: "survival" # BetterRTP bu dünyada rtp atacak
-      icon:
-        material: OAK_SAPLING
-        name: "§aOrman Dünyası"
-        slot: 11
-        lore:
-          - "§7Ormanlık alana ışınlan."
+  default-menu: "overworld" # /rtp yazılınca ilk burası açılır
+  menus:
+    overworld:
+      title: ":offset_-8::rtp_menu_overworld:"
+      rows: 6
+      items:
+        bg_waterfall:
+          slot: 47
+          material: "itemsadder-teleportation_hub:waterfall_animation"
+        nether_tab:
+          slot: 23
+          material: "itemsadder-teleportation_hub:nether_icon"
+          action: "menu"           # Tıklayınca menüyü değiştirir
+          action-value: "nether"   # Hedef menü id'si (Aşağıdaki nether bloğu)
+        end_tab:
+          slot: 26
+          material: "itemsadder-teleportation_hub:end_icon"
+          action: "menu"
+          action-value: "end"
+        location_1:
+          slot: 28
+          material: "itemsadder-teleportation_hub:rtp_pin"
+          name: "&fIşınlanma"
+          lore:
+            - ""
+            - "&#A5ACB8ᴀʟᴀɴ: 5000 x 5000"
+            - "&#A5ACB8ʏᴇɴɪʟᴇɴᴍᴇ ѕüʀᴇѕɪ: 7 ᴅᴀᴋɪᴋᴀ"
+            - ""
+            - " &#58A527→ ışıɴʟᴀɴᴍᴀᴋ ɪçɪɴ ᴛıᴋʟᴀ!"
+          action: "rtp"            # Tıklayınca RtpQueueManager'ı tetikler
+          action-value: "survival" # BetterRTP'nin atacağı dünya adı
+
+    nether:
+      title: ":offset_-8::rtp_menu_nether:"
+      rows: 6
+      items:
+        bg_lava:
+          slot: 53
+          material: "itemsadder-teleportation_hub:lava_animation"
+        overworld_tab:
+          slot: 19
+          material: "itemsadder-teleportation_hub:overworld_icon"
+          action: "menu"
+          action-value: "overworld"
+        location_1:
+          slot: 28
+          material: "itemsadder-teleportation_hub:rtp_pin"
+          name: "&fIşınlanma"
+          lore:
+            - ""
+            - "&#A5ACB8ᴀʟᴀɴ: 1000 x 1000"
+            - " &#58A527→ ışıɴʟᴀɴᴍᴀᴋ ɪçɪɴ ᴛıᴋʟᴀ!"
+          action: "rtp"
+          action-value: "world_nether"
+
+    end:
+      title: ":offset_-8::rtp_menu_end:"
+      rows: 6
+      items:
+        bg_stars:
+          slot: 37
+          material: "itemsadder-teleportation_hub:star_animation_3"
+        overworld_tab:
+          slot: 19
+          material: "itemsadder-teleportation_hub:overworld_icon"
+          action: "menu"
+          action-value: "overworld"
+        location_1:
+          slot: 28
+          material: "itemsadder-teleportation_hub:rtp_pin"
+          name: "&fIşınlanma"
+          lore:
+            - ""
+            - "&#A5ACB8ᴀʟᴀɴ: 5000 x 5000"
+            - " &#58A527→ ışıɴʟᴀɴᴍᴀᴋ ɪçɪɴ ᴛıᴋʟᴀ!"
+          action: "rtp"
+          action-value: "world_the_end"
 # ==========================================
 #       MultiLobby - Ana Yapılandırma
 # ==========================================

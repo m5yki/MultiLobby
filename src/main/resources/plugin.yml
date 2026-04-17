@@ -1,0 +1,46 @@
+name: MultiLobby
+version: 1.0.0
+main: me.maykitron.multiLobby.MultiLobby
+api-version: 1.19
+authors: [Maykitron]
+description: Optimize edilmis Spawn, Warp, Home, RTP(Menu) ve Link eklentisi.
+
+commands:
+  spawn:
+    description: Spawn/Lobi noktasina isinlar.
+    aliases: [lobby]
+  setspawn:
+    description: Spawn/Lobi noktasini belirler.
+    aliases: [setlobby]
+    permission: multilobby.admin
+  home:
+    description: Yatak noktaniza isinlar.
+  warp:
+    description: Warp menusunu acar veya isme isinlar.
+  setwarp:
+    description: Bulundugunuz konuma warp kaydeder.
+    permission: multilobby.admin
+  delwarp:
+    description: Istenilen warpi siler.
+    permission: multilobby.admin
+  rtp:
+    description: RTP (Rastgele Isinlanma) menusunu acar.
+    aliases: [kaptan]
+  multilobby:
+    description: MultiLobby yonetim komutu.
+    aliases: [lobimatik]
+  discord:
+    description: Discord linkini gonderir.
+  tiktok:
+    description: TikTok linkini gonderir.
+  website:
+    description: Web site linkini gonderir.
+  map:
+    description: Harita linkini gonderir.
+  back:
+    description: En son öldüğünüz (doğal sebeplerle) noktaya sizi ışınlar.
+
+permissions:
+  multilobby.admin:
+    description: MultiLobby yonetim komutlarina erisim saglar.
+    default: op

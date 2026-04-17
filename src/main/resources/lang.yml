@@ -1,0 +1,56 @@
+messages:
+  enabled-console: "[MultiLobby] Aktif edildi ve izole edildi!"
+  disabled-console: "[MultiLobby] Devre disi birakildi!"
+  first-join: "§aSunucuya hos geldin!"
+  spam-warning: "§cBu kadar hizli islem yapamazsin, yavasla!"
+  no-permission: "§cBu komut icin yetkin yok."
+  reload-success: "§aMultiLobby ayarlari yenilendi."
+
+info:
+  teleport-wait: "§7Isinlanmaniza §e%remain% saniye §7kaldi..."
+  teleport-now: "§aIsinlanma basliyor!"
+  teleported: "§a%reason% noktasina isinlandin!"
+  teleport-cancelled: "§cHareket ettigin icin isinlanma iptal edildi."
+
+spawn:
+  name: "Lobi"
+  not-set: "§cSpawn noktasi henuz ayarlanmamis!"
+  set-success: "§aSpawn noktasi basariyla ayarlandi!"
+
+home:
+  name: "Ev"
+  no-bed: "§cKayitli bir yatagin yok! Once bir yataga sag tiklamalisin."
+  bed-set-title: "§aYatak Ayarlandi!"
+  bed-set-sub: "§7Artik burasi senin evin."
+  bed-broken-title: "§cYatagin kirildi!"
+  bed-broken-sub: "§7Lutfen yeni bir yatak sec."
+  bed-taken: "§6[!] §cYatagin %player% tarafindan ele gecirildi!"
+
+rtp:
+  already-in-queue: "§cZaten RTP kuyrugundasin!"
+  queue-joined: "§aKuyruga alindin. Onundeki kisi sayisi: §e%pos%"
+  teleporting: "§6Sira sende! §aIsinlaniyorsun..."
+  on-cooldown: "§cKaptan şu an dinleniyor! Tekrar RTP atmak için §e%time% §cbeklemelisin."
+
+links:
+  discord:
+    text: "§9[!] §bDiscord sunucumuza katılmak için §nburaya tıklayın§b!"
+    url: "https://discord.gg/risement"
+    hover: "§7Tıklayarak sunucumuza katılabilirsiniz."
+  tiktok:
+    text: "§d[!] §dTikTok hesabımızı takip etmek için §nburaya tıklayın§d!"
+    url: "https://tiktok.com/@wolfplayer6001"
+    hover: "§7Tıklayarak hesabımıza gidebilirsiniz."
+  website:
+    text: "§a[!] §aWeb sitemize gitmek için §nburaya tıklayın§a!"
+    url: "https://www.risement.net"
+    hover: "§7VIP almak veya destek için tıklayın."
+  map:
+    text: "§e[!] §eCanlı haritamızı açmak için §nburaya tıklayın§e!"
+    url: "https://map.risement.net"
+    hover: "§7Tarayıcı üzerinden haritayı açmak için tıkla. (SMP olduğu için eklenmedi :D)"
+
+back:
+  name: "Ölüm Noktası"
+  location-saved: "§7Doğal bir sebeple öldüğün için konumun kaydedildi. §a/back §7ile dönebilirsin!"
+  no-location: "§cDönebileceğin bir ölüm konumu bulunamadı!"

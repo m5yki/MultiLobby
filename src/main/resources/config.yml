@@ -1,0 +1,81 @@
+rtp:
+  cooldown-seconds: 30
+  menu:
+    title: "§dRTP Dünya Seç"
+    rows: 3
+  worlds:
+    orman_dunyasi:
+      target-world: "survival" # BetterRTP bu dünyada rtp atacak
+      icon:
+        material: OAK_SAPLING
+        name: "§aOrman Dünyası"
+        slot: 11
+        lore:
+          - "§7Ormanlık alana ışınlan."
+# ==========================================
+#       MultiLobby - Ana Yapılandırma
+# ==========================================
+
+first-join:
+  spawn: true # Sunucuya ilk kez girenler spawnda mı doğsun?
+
+spawn:
+  warmup-seconds: 3 # Işınlanma bekleme süresi
+  cancel-on-move: true # Hareket edince ışınlanma iptal olsun mu?
+  # /setspawn veya /setlobby yazıldığında buralar otomatik dolar:
+  world: "spawn"
+  x: 0.0
+  y: 64.0
+  z: 0.0
+  yaw: 0.0
+  pitch: 0.0
+
+void-protect:
+  world: "spawn"
+  y-threshold: -60.0 # Bu kordinatın altına düşenler ölmeden spawna atılır
+
+# ==========================================
+#       Tıklanabilir Sosyal Medya Linkleri
+# ==========================================
+links:
+  discord:
+    text: "§9[!] §bDiscord sunucumuza katılmak için §nburaya tıklayın§b!"
+    url: "https://discord.gg/risement"
+    hover: "§7Tıklayarak sunucumuza katılabilirsiniz."
+  tiktok:
+    text: "§d[!] §dTikTok hesabımızı takip etmek için §nburaya tıklayın§d!"
+    url: "https://tiktok.com/@wolfplayer6001"
+    hover: "§7Tıklayarak hesabımıza gidebilirsiniz."
+  website:
+    text: "§a[!] §aWeb sitemize gitmek için §nburaya tıklayın§a!"
+    url: "https://www.risement.net"
+    hover: "§7VIP almak veya destek için tıklayın."
+  map:
+    text: "§e[!] §eCanlı haritamızı açmak için §nburaya tıklayın§e!"
+    url: "https://map.risement.net"
+    hover: "§7Tarayıcı üzerinden haritayı açmak için tıkla. (SMP olduğu için eklenmedi :D)"
+
+# ==========================================
+#       Warp Menü Ayarları
+# ==========================================
+warp-menu:
+  title: "§aWarplar"
+  rows: 3
+
+warps:
+  orman:
+    world: "world"
+    x: 100.0
+    y: 64.0
+    z: 100.0
+    yaw: 0.0
+    pitch: 0.0
+    icon:
+      material: OAK_SAPLING
+      name: "§eOrman"
+      lore:
+        - "§7Ormana gidip kasılmaya başla!"
+messages:
+  bed-taken: "§cYatağın başka bir oyuncu tarafından ele geçirildi!"
+  spam-warning: "§cBu kadar hızlı işlem yapamazsın!"
+  rtp-queue-joined: "§aRTP kuyruğuna girdin. Önündeki kişi sayısı: §e%pos%"
